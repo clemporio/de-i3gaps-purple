@@ -1,0 +1,94 @@
+! ┌──────────────────────────────────────────────────┐
+! │  Purple Minimal - Xresources                     │
+! │  Inspired by u/muvoksi's r/unixporn setup       │
+! └──────────────────────────────────────────────────┘
+
+! ── Color Definitions (Purple Palette) ───────────────
+#define BACKGROUND  #2f1e2e
+#define FOREGROUND  #a39e9b
+#define CURSOR      #a39e9b
+
+#define BLACK       #1b1b1b
+#define BRBLACK     #505050
+#define RED         #ef6155
+#define BRRED       #ef6155
+#define GREEN       #48b685
+#define BRGREEN     #48b685
+#define YELLOW      #fec418
+#define BRYELLOW    #fec418
+#define BLUE        #06b6ef
+#define BRBLUE      #06b6ef
+#define MAGENTA     #815ba4
+#define BRMAGENTA   #815ba4
+#define CYAN        #5bc4bf
+#define BRCYAN      #5bc4bf
+#define WHITE       #d0d0d0
+#define BRWHITE     #f5f5f5
+
+! ── XTerm ────────────────────────────────────────────
+XTerm*faceName:         RobotoMono:size=10
+XTerm*background:       BACKGROUND
+XTerm*foreground:       FOREGROUND
+XTerm*cursorColor:      CURSOR
+
+! ── URxvt (Fallback Terminal) ────────────────────────
+URxvt*font:             xft:RobotoMono:size=10:antialias=true
+URxvt*boldFont:         xft:RobotoMono:bold:size=10:antialias=true
+URxvt*italicFont:       xft:RobotoMono:italic:size=10:antialias=true
+
+URxvt*background:       BACKGROUND
+URxvt*foreground:       FOREGROUND
+URxvt*cursorColor:      CURSOR
+
+URxvt*scrollBar:        false
+URxvt*scrollBar_right:  false
+URxvt*internalBorder:   10
+URxvt*externalBorder:   0
+URxvt*depth:            32
+URxvt*transparent:      false
+
+! URxvt extensions
+URxvt*perl-ext-common:  default,matcher,clipboard
+URxvt*url-launcher:     /usr/bin/xdg-open
+URxvt*matcher.button:   1
+
+! ── Global Colors ────────────────────────────────────
+*.background:   BACKGROUND
+*.foreground:   FOREGROUND
+*.cursorColor:  CURSOR
+
+*.color0:       BLACK
+*.color1:       RED
+*.color2:       GREEN
+*.color3:       YELLOW
+*.color4:       BLUE
+*.color5:       MAGENTA
+*.color6:       CYAN
+*.color7:       WHITE
+*.color8:       BRBLACK
+*.color9:       BRRED
+*.color10:      BRGREEN
+*.color11:      BRYELLOW
+*.color12:      BRBLUE
+*.color13:      BRMAGENTA
+*.color14:      BRCYAN
+*.color15:      BRWHITE
+
+! ── Rofi Colors ──────────────────────────────────────
+rofi.color-enabled:     true
+rofi.color-window:      #272827, #9928b5, #272827
+rofi.color-normal:      #272827, #a39e9b, #272827, #353635, #13bf9d
+rofi.color-active:      #272827, #13bf9d, #272827, #353635, #13bf9d
+rofi.color-urgent:      #272827, #ef6155, #272827, #353635, #ef6155
+
+! ── Xcursor ──────────────────────────────────────────
+Xcursor.theme:  default
+Xcursor.size:   16
+
+! ── Xft (Font Rendering) ────────────────────────────
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.rgba:       rgb
+Xft.lcdfilter:  lcddefault

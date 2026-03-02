@@ -1,0 +1,137 @@
+# ┌──────────────────────────────────────────────────┐
+# │  Purple Minimal - Alacritty Configuration        │
+# │  Inspired by u/muvoksi's r/unixporn setup       │
+# └──────────────────────────────────────────────────┘
+
+# ── Window ───────────────────────────────────────────
+[window]
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+decorations = "none"
+opacity = 0.80
+startup_mode = "Windowed"
+
+# ── Scrolling ────────────────────────────────────────
+[scrolling]
+history = 10000
+multiplier = 3
+
+# ── Font ─────────────────────────────────────────────
+[font]
+size = 10.0
+
+[font.normal]
+family = "RobotoMono"
+style = "Medium"
+
+[font.bold]
+family = "RobotoMono"
+style = "Bold"
+
+[font.italic]
+family = "RobotoMono"
+style = "Medium Italic"
+
+[font.bold_italic]
+family = "RobotoMono"
+style = "Bold Italic"
+
+# ── Colors ───────────────────────────────────────────
+[colors.primary]
+background = "#2f1e2e"
+foreground = "#a39e9b"
+
+[colors.cursor]
+text = "#2f1e2e"
+cursor = "#a39e9b"
+
+[colors.vi_mode_cursor]
+text = "#2f1e2e"
+cursor = "#815ba4"
+
+[colors.selection]
+text = "#2f1e2e"
+background = "#815ba4"
+
+[colors.search.matches]
+foreground = "#2f1e2e"
+background = "#fec418"
+
+[colors.search.focused_match]
+foreground = "#2f1e2e"
+background = "#48b685"
+
+[colors.normal]
+black = "#1b1b1b"
+red = "#ef6155"
+green = "#48b685"
+yellow = "#fec418"
+blue = "#06b6ef"
+magenta = "#815ba4"
+cyan = "#5bc4bf"
+white = "#d0d0d0"
+
+[colors.bright]
+black = "#505050"
+red = "#ef6155"
+green = "#48b685"
+yellow = "#fec418"
+blue = "#06b6ef"
+magenta = "#815ba4"
+cyan = "#5bc4bf"
+white = "#f5f5f5"
+
+[colors.dim]
+black = "#1b1b1b"
+red = "#b04040"
+green = "#357a5e"
+yellow = "#b89010"
+blue = "#0480a8"
+magenta = "#5c3f78"
+cyan = "#408b87"
+white = "#909090"
+
+# ── Cursor ───────────────────────────────────────────
+[cursor.style]
+shape = "Block"
+blinking = "On"
+
+[cursor.vi_mode_style]
+shape = "Block"
+blinking = "Off"
+
+[cursor.blink_interval]
+
+# ── Mouse ────────────────────────────────────────────
+[mouse]
+hide_when_typing = true
+
+# ── Selection ────────────────────────────────────────
+[selection]
+save_to_clipboard = true
+
+# ── Keyboard ─────────────────────────────────────────
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Control"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control"
+action = "DecreaseFontSize"

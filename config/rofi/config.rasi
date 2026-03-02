@@ -1,0 +1,134 @@
+/* ┌──────────────────────────────────────────────────┐ */
+/* │  Purple Minimal - Rofi Configuration             │ */
+/* │  Inspired by u/muvoksi's r/unixporn setup       │ */
+/* └──────────────────────────────────────────────────┘ */
+
+configuration {
+    modi:                "drun,run,window";
+    show-icons:          true;
+    icon-theme:          "Papirus-Dark";
+    display-drun:        " Apps";
+    display-run:         " Run";
+    display-window:      " Windows";
+    drun-display-format: "{name}";
+    font:                "Source Code Pro Semibold 10.5";
+}
+
+* {
+    bg:         #272827;
+    bg-alt:     #353635;
+    fg:         #a39e9b;
+    fg-alt:     #d0d0d0;
+    accent:     #13bf9d;
+    urgent:     #ef6155;
+    purple:     #815ba4;
+    border-col: #9928b5;
+    transparent: #00000000;
+
+    background-color: @transparent;
+    text-color:       @fg;
+    spacing:          0;
+}
+
+window {
+    width:            35%;
+    background-color: @bg;
+    border:           2px;
+    border-color:     @border-col;
+    border-radius:    8px;
+    padding:          20px;
+    location:         center;
+    anchor:           center;
+}
+
+mainbox {
+    background-color: @bg;
+    children:         [ inputbar, listview ];
+    spacing:          15px;
+    padding:          0;
+}
+
+inputbar {
+    children:         [ prompt, entry ];
+    background-color: @bg-alt;
+    border-radius:    6px;
+    padding:          12px;
+    spacing:          10px;
+}
+
+prompt {
+    background-color: @transparent;
+    text-color:       @accent;
+    font:             "Font Awesome 5 Free Solid 12";
+    vertical-align:   0.5;
+}
+
+entry {
+    background-color: @transparent;
+    text-color:       @fg-alt;
+    placeholder:      "Search...";
+    placeholder-color: @fg;
+    vertical-align:   0.5;
+}
+
+listview {
+    columns:          1;
+    lines:            8;
+    cycle:            true;
+    dynamic:          true;
+    layout:           vertical;
+    background-color: @bg;
+    spacing:          4px;
+    scrollbar:        false;
+    fixed-height:     true;
+}
+
+element {
+    background-color: @bg;
+    padding:          10px 15px;
+    border-radius:    4px;
+    spacing:          10px;
+}
+
+element normal.normal {
+    background-color: @bg;
+    text-color:       @fg;
+}
+
+element normal.urgent {
+    background-color: @bg;
+    text-color:       @urgent;
+}
+
+element normal.active {
+    background-color: @bg;
+    text-color:       @accent;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+    text-color:       @accent;
+    border:           0 0 0 3px;
+    border-color:     @accent;
+}
+
+element selected.urgent {
+    background-color: @bg-alt;
+    text-color:       @urgent;
+}
+
+element selected.active {
+    background-color: @bg-alt;
+    text-color:       @accent;
+}
+
+element-icon {
+    size:             24px;
+    background-color: @transparent;
+}
+
+element-text {
+    background-color: @transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}

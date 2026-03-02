@@ -1,0 +1,235 @@
+# ┌──────────────────────────────────────────────────┐
+# │  Purple Minimal - i3-gaps Configuration          │
+# │  Inspired by u/muvoksi's r/unixporn setup       │
+# └──────────────────────────────────────────────────┘
+
+# ── Mod Key ──────────────────────────────────────────
+# Mod4 = Super (Command key on MacBook)
+set $mod Mod4
+
+# ── Font ─────────────────────────────────────────────
+font pango:Roboto 8
+
+# ── Gaps ─────────────────────────────────────────────
+gaps inner 12
+gaps outer 0
+
+# ── Borders ──────────────────────────────────────────
+default_border pixel 2
+default_floating_border pixel 2
+
+# ── Focus ────────────────────────────────────────────
+focus_follows_mouse yes
+
+# ── Floating Modifier ────────────────────────────────
+floating_modifier $mod
+
+# ── Variables ────────────────────────────────────────
+set $term alacritty
+set $launcher rofi -show drun
+
+# ── Color Definitions ───────────────────────────────
+set $bg         #2f1e2e
+set $fg         #a39e9b
+set $focused    #9928b5
+set $active     #7b218f
+set $unfocused  #2f1e2e
+set $urgent     #984141
+set $accent     #96e61e
+set $indicator  #815ba4
+
+# ── Window Colors ───────────────────────────────────
+# class                 border      background  text    indicator   child_border
+client.focused          $focused    $focused    $fg     $indicator  $focused
+client.focused_inactive $active     $active     $fg     $indicator  $active
+client.unfocused        $unfocused  $unfocused  $fg     $indicator  $unfocused
+client.urgent           $urgent     $urgent     $fg     $indicator  $urgent
+client.placeholder      $bg         $bg         $fg     $indicator  $bg
+client.background       $bg
+
+# ── Workspace Names (FontAwesome icons) ─────────────
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+# ── Workspace Assignments ───────────────────────────
+assign [class="Google-chrome"] $ws2
+assign [class="Chromium"] $ws2
+
+# ── Key Bindings: Applications ──────────────────────
+# Launch terminal
+bindsym $mod+Return exec $term
+
+# Launch application launcher
+bindsym $mod+d exec $launcher
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# ── Key Bindings: Focus ─────────────────────────────
+# Change focus (vim keys)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Change focus (arrow keys)
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# ── Key Bindings: Move Windows ──────────────────────
+# Move focused window (vim keys)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Move focused window (arrow keys)
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# ── Key Bindings: Layout ────────────────────────────
+# Split horizontal / vertical
+bindsym $mod+b split h
+bindsym $mod+v split v
+
+# Toggle fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus parent container
+bindsym $mod+a focus parent
+
+# Focus child container
+bindsym $mod+Shift+a focus child
+
+# ── Key Bindings: Scratchpad ────────────────────────
+# Move window to scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show/cycle through scratchpad windows
+bindsym $mod+minus scratchpad show
+
+# ── Key Bindings: Workspaces ────────────────────────
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# ── Key Bindings: Resize Mode ───────────────────────
+mode "resize" {
+    # Vim keys
+    bindsym h resize shrink width 5 px or 5 ppt
+    bindsym j resize grow height 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+    bindsym l resize grow width 5 px or 5 ppt
+
+    # Arrow keys
+    bindsym Left resize shrink width 5 px or 5 ppt
+    bindsym Down resize grow height 5 px or 5 ppt
+    bindsym Up resize shrink height 5 px or 5 ppt
+    bindsym Right resize grow width 5 px or 5 ppt
+
+    # Back to normal
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# ── Key Bindings: Media Keys ────────────────────────
+# Volume controls (PulseAudio)
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Media playback controls (playerctl)
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Screen brightness (MacBook keys)
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# ── Key Bindings: Screenshots ───────────────────────
+bindsym Print exec --no-startup-id scrot '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/'
+bindsym $mod+Print exec --no-startup-id scrot -s '%Y-%m-%d_%H-%M-%S.png' -e 'mv $f ~/Pictures/'
+
+# ── Key Bindings: Session ───────────────────────────
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 in-place
+bindsym $mod+Shift+r restart
+
+# Exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Lock screen
+bindsym $mod+Shift+x exec --no-startup-id i3lock -c 2f1e2e
+
+# ── Key Bindings: Gaps ──────────────────────────────
+bindsym $mod+g gaps inner current plus 5
+bindsym $mod+Shift+g gaps inner current minus 5
+bindsym $mod+Ctrl+g gaps inner current set 12
+
+# ── Startup Applications ────────────────────────────
+# Compositor
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Wallpaper
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+
+# Notification daemon
+exec --no-startup-id dunst
+
+# Network manager applet
+exec --no-startup-id nm-applet
+
+# PolicyKit agent (for authentication dialogs)
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+# Set cursor
+exec --no-startup-id xsetroot -cursor_name left_ptr
+
+# Merge Xresources
+exec --no-startup-id xrdb -merge ~/.Xresources
+
+# ── Window Rules ────────────────────────────────────
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="File-roller"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
